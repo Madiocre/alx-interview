@@ -3,6 +3,7 @@
 0-lockboxes
 """
 
+
 def canUnlockAll(boxes):
     """
     Returns a boolean representing
@@ -10,7 +11,6 @@ def canUnlockAll(boxes):
     returns false if even one 
     of them is not unlockable
     """
-    
     if (type(boxes)) is not list:
         return False
     elif (len(boxes)) == 0:

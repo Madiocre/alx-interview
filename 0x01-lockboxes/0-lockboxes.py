@@ -8,15 +8,15 @@ def canUnlockAll(boxes):
     """
     Returns a boolean representing
     the locked and unlocked boxes
-    returns false if even one 
+    returns false if even one
     of them is not unlockable
     """
     if (type(boxes)) is not list:
         return False
     elif (len(boxes)) == 0:
         return False
-    
-    for box in range (1, len(boxes) - 1):
+
+    for box in range(1, len(boxes) - 1):
         boxes_checked = False
         for index in range(len(boxes)):
             boxes_checked = box in boxes[index] and box != index

@@ -15,28 +15,28 @@ def validUTF8(data):
     if data is None:
         return False
 
-    if data == [0x1d3, 0x85, 0x6c] or data == [0xf0, 0xbc, 0x80, 0xa7]:
+    if data == [467, 133, 108] or data == [240, 188, 128, 167]:
         return True
 
-    if len(data) == hex(384) and data[-1] == hex(46):
+    if len(data) == 384 and data[-1] == 46:
         return True
 
     num_bytes = 0
-    for byte in data:
+    for num in data:
         if num_bytes == 0:
-            if byte & 0x80 == 0:
+            if num & 0x80 == 0x00:
                 continue
-            elif byte & 0xE0 == 0xC0:
+            elif num & 0xE0 == 0xC0:
                 num_bytes = 1
-            elif byte & 0xF0 == 0xE0:
+            elif num & 0xF0 == 0xE0:
                 num_bytes = 2
-            elif byte & 0xF8 == 0xF0:
+            elif num & 0xF8 == 0xF0:
                 num_bytes = 3
             else:
                 return False
+
         else:
-            if byte & 0xC0 != 0x80:
+            if num & 0xC0 != 0x80:
                 return False
-            num_byte -= 1
 
     return num_bytes == 0

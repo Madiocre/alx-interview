@@ -22,21 +22,21 @@ def validUTF8(data):
         return True
 
     num_bytes = 0
-    for num in data:
+    for byte in data:
         if num_bytes == 0:
-            if num & 0xF8 == 0xF0:
-                num_bytes = 3
-            elif num & 0xF0 == 0xE0:
-                num_bytes = 2
-            elif num & 0xE0 == 0xC0:
+            if byte & 0x80 == 0:
+                continue
+            elif byte & 0xE0 == 0xC0:
                 num_bytes = 1
-            elif num & 0x80 == 0x00:
-                num_bytes = 0
+            elif byte & 0xF0 == 0xE0:
+                num_bytes = 2
+            elif byte & 0xF8 == 0xF0:
+                num_bytes = 3
             else:
                 return False
-
         else:
-            if num & 0xC2 != 0x80:
+            if byte & 0xC0 != 0x80:
                 return False
+            num_byte -= 1
 
     return num_bytes == 0

@@ -36,14 +36,15 @@ def validUTF8(data):
             if num < 0x20 or num > 0x7F:
                 return False
         else:
-            continue
-            # if num_bytes == -1:
-            #     return False
-            # elif num_bytes > 1:
-            #     multi_byte = num_bytes - 1
-            #     continue
-            # else:
-            #     if (num & 0xC0) != 0x80:
-            #         return False
-            #     multi_byte -= 1
+            if num_bytes > 1:
+                if multi_byte != 0:
+                    return False
+                multi_byte = num_bytes - 1
+                continue
+            elif multi_byte:
+                if (num & 0xC0) != 0x80:
+                    return False
+                multi_byte -= 1
+            else:
+                return False
     return True

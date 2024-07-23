@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ utf8 validation """
 
+
 def num_of_bytes(num):
     """ Checks for num of bytes"""
     if num & 0xF0 == 0xF0:
@@ -14,6 +15,7 @@ def num_of_bytes(num):
     else:
         return 0
 
+
 def validUTF8(data):
     """
     Determines if a given data set represents a valid UTF-8 encoding.
@@ -23,18 +25,20 @@ def validUTF8(data):
 
     Returns:
         True if data is a valid UTF-8 encoding, False otherwise.
-    """ 
-    new_num = 0
+    """
+    multi_byte = 0
     for num in data:
-        if num_of_bytes(num) == 0:
-            return False
         num_bytes = num_of_bytes(num)
-        
+
         if num_bytes == 1:
             if num < 0x20 or num > 0x7F:
                 return False
         else:
-            for _ in range(num_bytes):
-                if data and (data[0] & 0xC0) != 0x80:
+            if num_bytes != 0:
+                multi_byte = num_bytes - 1
+                continue
+            else:
+                if (num & 0xC0) != 0x80:
                     return False
+                multi_byte -= 1
     return True

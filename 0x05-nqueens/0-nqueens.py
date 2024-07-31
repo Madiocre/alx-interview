@@ -48,4 +48,3 @@ result1 = solve_n_queens(N)
 # print(to_coordinates(result1))
 for solution in result1:
     print(solution)
-print()

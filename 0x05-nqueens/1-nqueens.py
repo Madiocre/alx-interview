@@ -8,6 +8,7 @@ import sys
 N = int(sys.argv[1])
 
 def isvalid():
+    """ """
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         exit(1)
@@ -18,6 +19,27 @@ def isvalid():
         print("N must be at least 4")
         exit(1)
 
-def is_safe(col_idx, row_idx, queens):
-    for i in range(N):
+def is_safe(row, queens) -> bool:
+    """ """
+    for i in range (len(queens)):
+        #check nothing in curr row
+        if queens[i] == row:
+            return False
+        #check nothing in imidiate diagonal or further
+        if abs(queens[i] - row) == abs(i - queens[i]):
+            return False
+        return True
+def solve_n_queen(N):
+    def backtrack(col_idx, queens):
+        if col_idx == N:
+            result = queens.append()
+            return
+        for i in range(N):
+            if (is_safe(row, queens)):
+                
+                backtrack(col_idx + 1, queens)
+    result = []
+    backtrack(0, [])
+    return result
+        
         

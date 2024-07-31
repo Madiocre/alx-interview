@@ -5,13 +5,11 @@ N queens Interview Question
 import sys
 
 
-N = int(sys.argv[1])
-
 def isvalid():
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         exit(1)
-    elif not isinstance(sys.argv[1], int):
+    elif not sys.argv[1].isdigit():
         print("N must be a number")
         exit(1)
     elif int(sys.argv[1]) < 4:
@@ -42,8 +40,8 @@ def solve_n_queens(N):
     return result
 
 
-
-isvalid
+isvalid()
+N = int(sys.argv[1])
 result1 = solve_n_queens(N)
 # print(to_coordinates(result1))
 for solution in result1:

@@ -16,6 +16,7 @@ def isvalid():
         print("N must be at least 4")
         exit(1)
 
+
 def is_safe(col_idx, queens):
     for i in range(len(queens)):
         if queens[i] == col_idx:  # Same column
@@ -23,6 +24,7 @@ def is_safe(col_idx, queens):
         if abs(queens[i] - col_idx) == abs(i - len(queens)):  # Diagonal
             return False
     return True
+
 
 def solve_n_queens(N):
     def backtrack(col_idx, queens):

@@ -4,7 +4,7 @@ Rotating an input matrix without returning it
 """
 
 def rotate_2d_matrix(matrix):
-    """ Function to rotate a 2d matrix counter clockwise     """
+    """ Function to rotate a 2d matrix counter clockwise """
     N = len(matrix)
     
     for x in range(0, int(N / 2)):

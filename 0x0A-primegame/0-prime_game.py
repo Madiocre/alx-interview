@@ -2,15 +2,16 @@
 """ Prime Game
 """
 
+
 def count_primes_up_to(n):
-    """ Function to count prime numbers up to n using the Sieve of Eratosthenes. """
-    
+    """ Function to count prime numbers up to n using the Sieve of
+    Eratosthenes. """
     if n < 2:
         return 0
-    
+
     prime = [True] * (n + 1)
     prime[0] = prime[1] = False
-    
+
     p = 2
     while p * p <= n:
         if prime[p]:
@@ -19,6 +20,7 @@ def count_primes_up_to(n):
         p += 1
 
     return sum(prime)
+
 
 def isWinner(x, nums):
     """ Function to Display Rounds and return who won more rounds """

@@ -23,7 +23,10 @@ def count_primes_up_to(n):
 
 
 def isWinner(x, nums):
-    """ Function to Display Rounds and return who won more rounds """
+    """ Function to determine the winner based on the number of rounds """
+    if x == 0 or any(num <= 0 for num in nums):
+        return None  # Return None for 0 rounds or invalid numbers
+
     Ben = 0
     Maria = 0
 

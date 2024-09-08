@@ -26,7 +26,7 @@ def isWinner(x, nums):
     """ Function to Display Rounds and return who won more rounds """
     if x <= 0:
         return None
-    
+
     Ben = 0
     Maria = 0
 
